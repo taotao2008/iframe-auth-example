@@ -11,7 +11,7 @@ npm start
 ```
 
 docker build --no-cache  -t wali/iframe-auth:v1.0 .
-docker run --name iframe-auth -d -p 8010:8010  wali/iframe-auth:v1.0
+docker run --name iframe-auth -d -p 3030:3030  wali/iframe-auth:v1.0
 
 
 
