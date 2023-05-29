@@ -38,7 +38,7 @@ app.post('/sso', function (req, res) {
 
 	// if dont have the user created on rocket.chat end yet, you can now create it
 	//var currentUsername = null;
-	var currentUsername = 'abc';
+	var currentUsername = true;
 	if (!currentUsername) {
 		axios.post('https://rvr.secde.fun/api/v1/users.register', {
 			username: 'new-user',
@@ -104,7 +104,7 @@ app.post('/login', function (req, res) {
 
 	// if dont have the user created on rocket.chat end yet, you can now create it
 	//var currentUsername = null;
-	var currentUsername = 'abc';
+	var currentUsername = true;
 	if (!currentUsername) {
 		axios.post('https://rvr.secde.fun/api/v1/users.register', {
 			username: 'new-user',
