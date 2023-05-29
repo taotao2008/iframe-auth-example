@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 // CORS in case you need
 app.use((req, res, next) => {
-	res.set('Access-Control-Allow-Origin', 'https://rvr.secde.fun'); // this is the rocket.chat URL
+	res.set('Access-Control-Allow-Origin', 'http://localhost:3000'); // this is the rocket.chat URL
 	res.set('Access-Control-Allow-Credentials', 'true');
 
 	next();
@@ -39,7 +39,7 @@ app.post('/sso', function (req, res) {
 	// if dont have the user created on rocket.chat end yet, you can now create it
 	var currentUsername = null;
 	if (!currentUsername) {
-		axios.post('https://rvr.secde.fun/api/v1/users.register', {
+		axios.post('http://localhost:3000/api/v1/users.register', {
 			username: 'new-user',
 			email: 'mynewuser@email.com',
 			pass: 'new-users-passw0rd',
@@ -48,7 +48,7 @@ app.post('/sso', function (req, res) {
 
 			// after creation you need to log the user in to get the `authToken`
 			if (response.data.success) {
-				return axios.post('https://rvr.secde.fun/api/v1/login', {
+				return axios.post('http://localhost:3000/api/v1/login', {
 					username: 'new-user',
 					password: 'new-users-passw0rd'
 				});
@@ -65,7 +65,7 @@ app.post('/sso', function (req, res) {
 	} else {
 
 		// otherwise create a rocket.chat session using rocket.chat's API
-		axios.post('https://rvr.secde.fun/api/v1/login', {
+		axios.post('http://localhost:3000/api/v1/login', {
 			username: 'username-set-previously',
 			password: 'password-set-previously'
 		}).then(function (response) {
@@ -104,7 +104,7 @@ app.post('/login', function (req, res) {
 	// if dont have the user created on rocket.chat end yet, you can now create it
 	var currentUsername = null;
 	if (!currentUsername) {
-		axios.post('https://rvr.secde.fun/api/v1/users.register', {
+		axios.post('http://localhost:3000/api/v1/users.register', {
 			username: 'new-user',
 			email: 'mynewuser@email.com',
 			pass: 'new-users-passw0rd',
@@ -113,7 +113,7 @@ app.post('/login', function (req, res) {
 
 			// after creation you need to log the user in to get the `authToken`
 			if (response.data.success) {
-				return axios.post('https://rvr.secde.fun/api/v1/login', {
+				return axios.post('http://localhost:3000/api/v1/login', {
 					username: 'new-user',
 					password: 'new-users-passw0rd'
 				});
@@ -127,7 +127,7 @@ app.post('/login', function (req, res) {
 				window.parent.postMessage({
 					event: 'login-with-token',
 					loginToken: '${ response.data.data.authToken }'
-				}, 'https://rvr.secde.fun'); // rocket.chat's URL
+				}, 'http://localhost:3000'); // rocket.chat's URL
 				</script>`);
 			}
 		}).catch(function (error) {
@@ -136,7 +136,7 @@ app.post('/login', function (req, res) {
 	} else {
 
 		// otherwise create a rocket.chat session using rocket.chat's API
-		axios.post('https://rvr.secde.fun/api/v1/login', {
+		axios.post('http://localhost:3000/api/v1/login', {
 			username: 'username-set-previously',
 			password: 'password-set-previously'
 		}).then(function (response) {
@@ -148,7 +148,7 @@ app.post('/login', function (req, res) {
 				window.parent.postMessage({
 					event: 'login-with-token',
 					loginToken: '${ response.data.data.authToken }'
-				}, 'https://rvr.secde.fun'); // rocket.chat's URL
+				}, 'http://localhost:3000'); // rocket.chat's URL
 				</script>`);
 			}
 		}).catch(function() {
